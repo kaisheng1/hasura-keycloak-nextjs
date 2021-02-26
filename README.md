@@ -34,7 +34,7 @@ Then run,
 cd hasura && hasura console
 ```
 
-This will open up a new console and the migrations made in this console will be automatically applied to the docker hasura.
+This will open up a new console and the migrations made in this console will be automatically applied to the docker hasura. Note that migrations are only created when using the console through the CLI.
 
 If you have changed the keycloak realm name, also change the jwt_url in HASURA_GRAPHQL_JWT_SECRET in `docker-compose.yml`. The format is http://keycloak:8080/auth/realms/{realm_name}/protocol/openid-connect/certs.
 
