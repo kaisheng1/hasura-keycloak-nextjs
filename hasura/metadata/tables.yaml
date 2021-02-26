@@ -1,6 +1,13 @@
 - table:
     schema: public
     name: items
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - name
+      filter: {}
 - table:
     schema: public
     name: order
