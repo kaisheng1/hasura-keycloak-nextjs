@@ -26,10 +26,18 @@ See here: https://www.keycloak.org/docs/latest/getting_started/#creating-a-user.
 
 ## Hasura
 
-Running on localhost:8081/console. Check the admin secret from `docker-compose.yml` to be able to log in to the console.
+Instead of accessing the console on http://localhost:8080/console, you should install the hasura cli [here](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html#install-hasura-cli).
+
+Then run,
+
+```bash
+cd hasura && hasura console
+```
+
+This will open up a new console and the migrations made in this console will be automatically applied to the docker hasura.
 
 If you have changed the keycloak realm name, also change the jwt_url in HASURA_GRAPHQL_JWT_SECRET in `docker-compose.yml`. The format is http://keycloak:8080/auth/realms/{realm_name}/protocol/openid-connect/certs.
 
 ## Next.js
 
-The directory `libs/` contains all the configurations & helper methods for Hasura, Keycloak and Apollo Client. In `pages/index.tsx`, there is a graphql query requesting for items, which may return errors if items table are not migrated from my project. Remove the query or create a new items table in Hasura.
+The directory `libs/` contains all the configurations & helper methods for Hasura, Keycloak and Apollo Client.
