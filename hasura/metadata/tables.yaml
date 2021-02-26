@@ -1,3 +1,6 @@
 - table:
     schema: public
     name: items
+- table:
+    schema: public
+    name: order
