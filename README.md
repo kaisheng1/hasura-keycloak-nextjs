@@ -22,7 +22,7 @@ Realm is imported from `docker-setup/keycloak/imports/realm-export.json` when th
 
 ### Create a new user
 
-See here: https://www.keycloak.org/docs/latest/getting_started/#creating-a-user. Add user to the demo-user group or the name you specified. As designed, it should have x-hasura-allowed-roles & x-hasura-default-role in the access token.
+See here: https://www.keycloak.org/docs/latest/getting_started/#creating-a-user. Add user to the user group or the name you specified. As designed, it should have x-hasura-allowed-roles & x-hasura-default-role in the access token.
 
 ## Hasura
 
