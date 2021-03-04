@@ -1,6 +1,8 @@
 import { useKeycloak } from "@react-keycloak/ssr";
 import { KeycloakInstance } from "keycloak-js";
 import { useQuery } from "urql";
+import { Keycloak } from "../libs/keycloak";
+import { createUrqlClient, ssrCache } from "../libs/urql";
 
 const GET_ITEMS = `
   query {
@@ -28,4 +30,12 @@ export default function Home() {
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
+}
+
+export async function getServerSideProps(ctx) {
+  const keycloak = Keycloak(ctx.req);
+  const urqlClient = createUrqlClient(keycloak.token);
+
+  await urqlClient.query(GET_ITEMS).toPromise();
+  return { props: { urqlState: ssrCache.extractData() } };
 }

@@ -9,7 +9,7 @@ import {
 } from "../libs/keycloak";
 import { parseCookies } from "../libs/cookie";
 import { useMemo } from "react";
-import { createUrqlClient } from "../libs/urql";
+import { createUrqlClient, ssrCache } from "../libs/urql";
 
 interface Props extends AppProps {
   cookies: unknown;
@@ -18,6 +18,11 @@ interface Props extends AppProps {
 
 function MyApp({ Component, pageProps, cookies, token }: Props) {
   const urqlClient = useMemo(() => createUrqlClient(token), [token]);
+
+  // SSR cache for urql
+  if (pageProps?.urqlState) {
+    ssrCache.restoreData(pageProps.urqlState);
+  }
   return (
     <SSRKeycloakProvider
       keycloakConfig={keycloakConfig}
