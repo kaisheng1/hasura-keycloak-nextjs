@@ -8,14 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
     "@react-keycloak/ssr": "^3.3.0",
     "cookie": "^0.4.1",
     "graphql": "^15.5.0",
     "keycloak-js": "^12.0.3",
     "next": "10.0.7",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "urql": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",

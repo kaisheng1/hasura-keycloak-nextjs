@@ -1,7 +1,6 @@
 import type { AppProps, AppContext } from "next/app";
 import { SSRKeycloakProvider } from "@react-keycloak/ssr";
-import { ApolloProvider } from "@apollo/client";
-
+import { Provider } from "urql";
 import {
   keycloakConfig,
   initOptions,
@@ -9,8 +8,8 @@ import {
   Keycloak,
 } from "../libs/keycloak";
 import { parseCookies } from "../libs/cookie";
-import { createApolloClient } from "../libs/apollo";
 import { useMemo } from "react";
+import { createUrqlClient } from "../libs/urql";
 
 interface Props extends AppProps {
   cookies: unknown;
@@ -18,16 +17,16 @@ interface Props extends AppProps {
 }
 
 function MyApp({ Component, pageProps, cookies, token }: Props) {
-  const apolloClient = useMemo(() => createApolloClient(token), [token]);
+  const urqlClient = useMemo(() => createUrqlClient(token), [token]);
   return (
     <SSRKeycloakProvider
       keycloakConfig={keycloakConfig}
       persistor={getPersistor(cookies)}
       initOptions={initOptions}
     >
-      <ApolloProvider client={apolloClient}>
+      <Provider value={urqlClient}>
         <Component {...pageProps} />
-      </ApolloProvider>
+      </Provider>
     </SSRKeycloakProvider>
   );
 }

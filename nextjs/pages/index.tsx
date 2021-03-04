@@ -1,9 +1,8 @@
 import { useKeycloak } from "@react-keycloak/ssr";
 import { KeycloakInstance } from "keycloak-js";
+import { useQuery } from "urql";
 
-import { gql, useQuery } from "@apollo/client";
-
-const GET_ITEMS = gql`
+const GET_ITEMS = `
   query {
     items {
       name
@@ -13,9 +12,12 @@ const GET_ITEMS = gql`
 
 export default function Home() {
   const { keycloak } = useKeycloak<KeycloakInstance>();
-  const { loading, error, data } = useQuery(GET_ITEMS);
+  const [result] = useQuery({
+    query: GET_ITEMS,
+  });
+  const { fetching, error, data } = result;
 
-  if (loading) {
+  if (fetching) {
     return "Loading...";
   }
   return (
