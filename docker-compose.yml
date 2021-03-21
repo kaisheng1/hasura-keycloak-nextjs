@@ -52,5 +52,19 @@ services:
       - 8081:8080
     depends_on:
       - postgres
+  nextjs:
+    container_name: nextjs
+    build:
+      context: nextjs
+      dockerfile: Dockerfile
+    volumes:
+      - ./nextjs:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    ports:
+      - 3000:3000
+    depends_on:
+      - keycloak
+      - graphql-engine
 volumes:
   db_data:

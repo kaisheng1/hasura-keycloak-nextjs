@@ -1,8 +1,8 @@
 import { useKeycloak } from "@react-keycloak/ssr";
 import { KeycloakInstance } from "keycloak-js";
 import { useQuery } from "urql";
-import { Keycloak } from "../libs/keycloak";
-import { createUrqlClient, ssrCache } from "../libs/urql";
+// import { Keycloak } from "../libs/keycloak";
+// import { createUrqlClient, ssrCache } from "../libs/urql";
 
 const GET_ITEMS = `
   query {

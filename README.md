@@ -5,16 +5,10 @@ This is a boilerplate for Hasura, Keycloak and Next.js.
 Start the docker containers
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
-Use the admin credentials `KEYCLOAK_USER` & `KEYCLOAK_PASSWORD`in docker-compose.yml to log in to keycloak admin page http://localhost:8081/auth. Create a new user and set a new password. The user will automatically be assigned the default group.
-
-Start Next.js website
-
-```bash
-cd nextjs && npm run dev
-```
+Use the admin credentials `KEYCLOAK_USER` & `KEYCLOAK_PASSWORD`in docker-compose.yml to log in to keycloak admin page http://localhost:8081/auth. Create a new user and set a new password. The user will automatically be assigned to the default group.
 
 ## Keycloak
 
@@ -42,4 +36,4 @@ If you have changed the keycloak realm name, also change the jwt_url in HASURA_G
 
 ## Next.js
 
-The directory `libs/` contains all the configurations & helper methods for Hasura, Keycloak and Apollo Client.
+The directory `libs/` contains all the configurations & helper methods for Hasura, Keycloak and Urql Client. You can also use Apollo Client or other graphql clients as you want.
