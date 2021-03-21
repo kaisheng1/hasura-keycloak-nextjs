@@ -8,6 +8,8 @@ Start the docker containers
 docker-compose up -d
 ```
 
+Use the admin credentials `KEYCLOAK_USER` & `KEYCLOAK_PASSWORD`in docker-compose.yml to log in to keycloak admin page http://localhost:8081/auth. Create a new user and set a new password. The user will automatically be assigned the default group.
+
 Start Next.js website
 
 ```bash
@@ -22,7 +24,7 @@ Realm is imported from `docker-setup/keycloak/imports/realm-export.json` when th
 
 ### Create a new user
 
-See here: https://www.keycloak.org/docs/latest/getting_started/#creating-a-user. Add user to the user group or the name you specified. As designed, it should have x-hasura-allowed-roles & x-hasura-default-role in the access token.
+See here: https://www.keycloak.org/docs/latest/getting_started/#creating-a-user. Add user to the user group or the name you specified.
 
 ## Hasura
 
