@@ -18,7 +18,7 @@ export default function Home() {
     query: GET_ITEMS,
   });
   const { fetching, error, data } = result;
-
+  console.log(keycloak.token);
   if (fetching) {
     return "Loading...";
   }
@@ -32,10 +32,10 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const keycloak = Keycloak(ctx.req);
-  const urqlClient = createUrqlClient(keycloak.token);
+// export async function getServerSideProps(ctx) {
+//   const keycloak = Keycloak(ctx.req);
+//   const urqlClient = createUrqlClient(keycloak.token);
 
-  await urqlClient.query(GET_ITEMS).toPromise();
-  return { props: { urqlState: ssrCache.extractData() } };
-}
+//   await urqlClient.query(GET_ITEMS).toPromise();
+//   return { props: { urqlState: ssrCache.extractData() } };
+// }
